@@ -1,10 +1,15 @@
-import './App.css'
+import Header from "./components/Header"
+import SearchBar from "./components/SearchBar"
+import MovieGrid from "./components/MovieGrid"
 
 function App() {
   return (
     <div>
-      <h1>Movie Explorer</h1>
+      <Header />
+      <SearchBar />
+      <MovieGrid />
     </div>
   )
 }
+
 export default App
