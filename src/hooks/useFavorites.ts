@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react"
 import type { Movie } from "../types/movie"
 
-export function useFavorites() {
+export function useFavorites(): {
+  favorites: Movie[]
+  toggleFavorite: (movie: Movie) => void
+} {
   const [favorites, setFavorites] = useState<Movie[]>(() => {
     try {
       const stored = localStorage.getItem("favorites")

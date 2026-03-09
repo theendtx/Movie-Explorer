@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react"
 import type { Movie, MovieApi, MoviesApiResponse } from "../types/movie"
 
-export function useMovies() {
+export function useMovies(): {
+  movies: Movie[]
+  loading: boolean
+  error: string | null
+} {
 
   const [movies, setMovies] = useState<Movie[]>([])
   const [loading, setLoading] = useState(true)
