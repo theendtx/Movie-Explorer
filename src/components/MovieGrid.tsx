@@ -1,4 +1,4 @@
-import type { Movie } from "../types/movie"
+﻿import type { Movie } from "../types/movie"
 import MovieCard from "./MovieCard"
 
 type MovieGridProps = {
@@ -9,16 +9,16 @@ type MovieGridProps = {
 
 function MovieGrid({ movies, favorites, onToggleFavorite }: MovieGridProps) {
   return (
-    <div className="movie-grid">
+    <section className="movie-grid">
       {movies.map(movie => (
-  <MovieCard
-    key={movie.id}
-    movie={movie}
-    favorites={favorites}
-    onToggleFavorite={onToggleFavorite}
-  />
-))}
-    </div>
+        <MovieCard
+          key={movie.id}
+          movie={movie}
+          favorites={favorites}
+          onToggleFavorite={onToggleFavorite}
+        />
+      ))}
+    </section>
   )
 }
 

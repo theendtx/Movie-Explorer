@@ -1,4 +1,4 @@
-import type { Movie } from "../types/movie"
+﻿import type { Movie } from "../types/movie"
 
 type MovieCardProps = {
   movie: Movie
@@ -7,21 +7,25 @@ type MovieCardProps = {
 }
 
 function MovieCard({ movie, favorites, onToggleFavorite }: MovieCardProps) {
-
   const isFavorite = favorites.some(fav => fav.id === movie.id)
 
   return (
-    <div className="movie-card">
-      <img src={movie.poster} alt={movie.title} />
-
-      <h3>{movie.title}</h3>
-      <p>{movie.year}</p>
-
-      <button onClick={() => onToggleFavorite(movie)}>
-        {isFavorite ? "❤️" : "🤍"}
+    <article className="movie-card">
+      <button
+        className="favorite-btn"
+        onClick={() => onToggleFavorite(movie)}
+        aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+      >
+        {isFavorite ? "*" : "+"}
       </button>
 
-    </div>
+      <img src={movie.poster} alt={movie.title} loading="lazy" />
+
+      <div className="movie-meta">
+        <h3>{movie.title}</h3>
+        <p>{movie.year}</p>
+      </div>
+    </article>
   )
 }
 
