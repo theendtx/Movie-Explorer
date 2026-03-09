@@ -9,9 +9,22 @@ export default function App() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState("")
+  const [favorites, setFavorites] = useState<Movie[]>([])
   const filteredMovies = movies.filter(movie =>
   movie.title.toLowerCase().includes(searchQuery.toLowerCase())
 )
+
+function toggleFavorite(movie: Movie) {
+
+  const isFavorite = favorites.some(fav => fav.id === movie.id)
+
+  if (isFavorite) {
+    setFavorites(favorites.filter(fav => fav.id !== movie.id))
+  } else {
+    setFavorites([...favorites, movie])
+  }
+
+}
 
   useEffect(() => {
     fetch("https://www.omdbapi.com/?s=batman&apikey=564727fa")
@@ -43,7 +56,11 @@ export default function App() {
   searchQuery={searchQuery}
   onSearchChange={setSearchQuery}
 />
-      <MovieGrid movies={filteredMovies} />
+      <MovieGrid
+  movies={filteredMovies}
+  favorites={favorites}
+  onToggleFavorite={toggleFavorite}
+/>
     </div>
   )
 }
