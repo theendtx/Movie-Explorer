@@ -10,7 +10,9 @@ export function useMovies() {
   useEffect(() => {
     async function loadMovies() {
       try {
-        const res = await fetch("https://www.omdbapi.com/?s=batman&apikey=564727fa")
+        const res = await fetch(
+  "https://www.omdbapi.com/?s=movie&apikey=ee34b827"
+)
         const data: MoviesApiResponse = await res.json()
 
         const mappedMovies = data.Search.map((movie: MovieApi) => ({
