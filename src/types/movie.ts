@@ -4,3 +4,14 @@ export type Movie = {
   year: number
   poster: string
 }
+
+export type MovieApi = {
+  Title: string
+  Year: string
+  imdbID: string
+  Poster: string
+}
+
+export type MoviesApiResponse = {
+  Search: MovieApi[]
+}
