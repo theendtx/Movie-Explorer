@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react"
+﻿import { useEffect, useState, useMemo } from "react"
 import Header from "./components/Header"
 import SearchBar from "./components/SearchBar"
 import MovieGrid from "./components/MovieGrid"
@@ -12,9 +12,11 @@ function App() {
   const { favorites, toggleFavorite } = useFavorites()
   const [searchQuery, setSearchQuery] = useState("")
 
-  const filteredMovies = movies.filter(movie =>
+  const filteredMovies = useMemo(() => {
+  return movies.filter(movie =>
     movie.title.toLowerCase().includes(searchQuery.toLowerCase())
   )
+}, [movies, searchQuery])
 
   useEffect(() => {
     document.body.classList.toggle("theme-dark", darkMode)

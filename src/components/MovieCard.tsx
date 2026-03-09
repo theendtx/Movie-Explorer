@@ -1,4 +1,5 @@
 ﻿import type { Movie } from "../types/movie"
+import React from "react"
 
 type MovieCardProps = {
   movie: Movie
@@ -29,4 +30,4 @@ function MovieCard({ movie, favorites, onToggleFavorite }: MovieCardProps) {
   )
 }
 
-export default MovieCard
+export default React.memo(MovieCard)
