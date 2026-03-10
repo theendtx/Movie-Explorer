@@ -1,4 +1,6 @@
-﻿type HeaderProps = {
+import { NavLink } from "react-router-dom"
+
+type HeaderProps = {
   darkMode: boolean
   setDarkMode: (value: boolean) => void
 }
@@ -10,6 +12,17 @@ function Header({ darkMode, setDarkMode }: HeaderProps) {
         <p className="hero-kicker">Stream and discover</p>
         <h1>Movie Explorer</h1>
       </div>
+
+            <nav className="top-nav">
+        <NavLink to="/" end className="nav-link">
+          Movies
+        </NavLink>
+
+        <NavLink to="/favorites" className="nav-link">
+          Favorites
+        </NavLink>
+      </nav>
+
 
       <button
         className="theme-toggle"

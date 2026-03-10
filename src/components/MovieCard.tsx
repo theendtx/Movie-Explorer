@@ -1,5 +1,5 @@
-﻿import type { Movie } from "../types/movie"
-import React from "react"
+import type { Movie } from "../types/movie"
+import { Link } from "react-router-dom"
 
 type MovieCardProps = {
   movie: Movie
@@ -20,7 +20,9 @@ function MovieCard({ movie, favorites, onToggleFavorite }: MovieCardProps) {
         {isFavorite ? "*" : "+"}
       </button>
 
-      <img src={movie.poster} alt={movie.title} loading="lazy" />
+      <Link to={`/movie/${movie.id}`}>
+        <img src={movie.poster} alt={movie.title} loading="lazy" />
+      </Link>
 
       <div className="movie-meta">
         <h3>{movie.title}</h3>
@@ -30,4 +32,4 @@ function MovieCard({ movie, favorites, onToggleFavorite }: MovieCardProps) {
   )
 }
 
-export default React.memo(MovieCard)
+export default MovieCard

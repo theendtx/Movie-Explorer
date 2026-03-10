@@ -17,6 +17,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 24px;
 }
@@ -61,6 +62,51 @@
 
 .theme-toggle:hover {
   transform: translateY(-2px);
+}
+
+.top-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.app.theme-light .nav-link {
+  color: #2b1b52;
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(122, 81, 248, 0.2);
+}
+
+.app.theme-dark .nav-link {
+  color: #f1e9ff;
+  background: rgba(26, 19, 48, 0.85);
+  border-color: rgba(156, 121, 255, 0.28);
+}
+
+.nav-link.active,
+.nav-link:hover {
+  transform: translateY(-1px);
+}
+
+.app.theme-light .nav-link.active,
+.app.theme-light .nav-link:hover {
+  background: rgba(129, 90, 255, 0.16);
+  border-color: rgba(129, 90, 255, 0.45);
+}
+
+.app.theme-dark .nav-link.active,
+.app.theme-dark .nav-link:hover {
+  background: rgba(129, 90, 255, 0.26);
+  border-color: rgba(176, 145, 255, 0.5);
 }
 
 .search-wrap {
@@ -197,6 +243,42 @@
   color: #2a1a4d;
 }
 
+.details-page h2 {
+  margin: 0 0 12px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 18px;
+  text-decoration: none;
+  font-weight: 700;
+  color: inherit;
+}
+
+.details-card {
+  display: grid;
+  grid-template-columns: minmax(180px, 260px) 1fr;
+  gap: 18px;
+  padding: 18px;
+  border-radius: 20px;
+}
+
+.app.theme-light .details-card {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(133, 99, 248, 0.24);
+}
+
+.app.theme-dark .details-card {
+  background: rgba(20, 16, 36, 0.82);
+  border: 1px solid rgba(138, 103, 255, 0.27);
+}
+
+.details-card img {
+  width: 100%;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
@@ -210,5 +292,9 @@
 
   .movie-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .details-card {
+    grid-template-columns: 1fr;
   }
 }

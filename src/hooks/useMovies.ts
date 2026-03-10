@@ -5,11 +5,18 @@ export function useMovies(): {
   movies: Movie[]
   loading: boolean
   error: string | null
+  searchQuery: string
+  setSearchQuery: (value: string) => void
 } {
 
   const [movies, setMovies] = useState<Movie[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [searchQuery, setSearchQuery] = useState("")
+
+  const filteredMovies = movies.filter(movie =>
+  movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+)
 
   useEffect(() => {
     async function loadMovies() {
@@ -37,6 +44,12 @@ export function useMovies(): {
     loadMovies()
   }, [])
 
-  return { movies, loading, error }
+  return {
+  movies: filteredMovies,
+  loading,
+  error,
+  searchQuery,
+  setSearchQuery
+}
 
 }
