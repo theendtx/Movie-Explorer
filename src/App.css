@@ -113,6 +113,64 @@
   margin: 0 0 26px;
 }
 
+.spotlight {
+  margin: 0 0 24px;
+  padding: 22px 24px;
+  border-radius: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.16), transparent 28%),
+    linear-gradient(135deg, rgba(131, 86, 255, 0.22), transparent 55%);
+  pointer-events: none;
+}
+
+.app.theme-light .spotlight {
+  background: linear-gradient(135deg, rgba(118, 84, 255, 0.14), rgba(255, 255, 255, 0.72));
+  border: 1px solid rgba(133, 99, 248, 0.2);
+}
+
+.app.theme-dark .spotlight {
+  background: linear-gradient(135deg, rgba(92, 58, 199, 0.32), rgba(17, 12, 34, 0.85));
+  border: 1px solid rgba(138, 103, 255, 0.26);
+}
+
+.spotlight-kicker,
+.spotlight h2,
+.spotlight-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.spotlight-kicker {
+  margin: 0 0 8px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.spotlight h2 {
+  margin: 0;
+  max-width: 760px;
+  font-size: clamp(26px, 4vw, 42px);
+  line-height: 1.05;
+}
+
+.spotlight-copy {
+  margin: 12px 0 0;
+  max-width: 620px;
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.86;
+}
+
 .search-input {
   width: min(560px, 100%);
   border-radius: 16px;
@@ -241,6 +299,12 @@
   font-size: 24px;
   font-weight: 700;
   color: #2a1a4d;
+}
+
+.empty-state {
+  margin: 18px 0 24px;
+  font-size: 16px;
+  opacity: 0.8;
 }
 
 .details-page h2 {
