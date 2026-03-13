@@ -26,12 +26,16 @@ export function useMovies(): {
   searchQuery: string
   isShowingRecommendations: boolean
   setSearchQuery: (value: string) => void
+  page: number
+  setPage: (value: number) => void
 } {
   const [movies, setMovies] = useState<Movie[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState("")
+  const [page, setPage] = useState(1)
   const [debouncedQuery, setDebouncedQuery] = useState("")
+  
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -79,7 +83,7 @@ export function useMovies(): {
         setError(null)
 
         const res = await fetch(
-          `https://www.omdbapi.com/?s=${debouncedQuery}&apikey=ee34b827`
+          `https://www.omdbapi.com/?s=${debouncedQuery}&page=${page}&apikey=ee34b827`
         )
 
         const data: MoviesApiResponse = await res.json()
@@ -102,14 +106,17 @@ export function useMovies(): {
     }
 
     loadMovies()
-  }, [debouncedQuery])
+  }, [debouncedQuery, page])
 
+  const isShowingRecommendations = !debouncedQuery.trim();
   return {
-    movies,
-    loading,
-    error,
-    searchQuery,
-    isShowingRecommendations: !searchQuery.trim(),
-    setSearchQuery,
-  }
+  movies,
+  loading,
+  error,
+  searchQuery,
+  isShowingRecommendations,
+  setSearchQuery,
+  page,
+  setPage
+}
 }
